@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/physics-ug-journal-club/static/css/main.afe542f7.chunk.css",
-    "main.js": "/physics-ug-journal-club/static/js/main.309e8902.chunk.js",
-    "main.js.map": "/physics-ug-journal-club/static/js/main.309e8902.chunk.js.map",
+    "main.js": "/physics-ug-journal-club/static/js/main.dbb09d5d.chunk.js",
+    "main.js.map": "/physics-ug-journal-club/static/js/main.dbb09d5d.chunk.js.map",
     "runtime-main.js": "/physics-ug-journal-club/static/js/runtime-main.a1d33d26.js",
     "runtime-main.js.map": "/physics-ug-journal-club/static/js/runtime-main.a1d33d26.js.map",
     "static/css/2.75cac9de.chunk.css": "/physics-ug-journal-club/static/css/2.75cac9de.chunk.css",
@@ -16,6 +16,7 @@
     "static/js/2.51ab82fd.chunk.js.LICENSE.txt": "/physics-ug-journal-club/static/js/2.51ab82fd.chunk.js.LICENSE.txt",
     "static/media/katex.min.css": "/physics-ug-journal-club/static/media/KaTeX_Typewriter-Regular.9f1a86cb.woff",
     "static/media/logo.6ce24c58.svg": "/physics-ug-journal-club/static/media/logo.6ce24c58.svg",
+    "static/media/meeting1.78c51e83.pdf": "/physics-ug-journal-club/static/media/meeting1.78c51e83.pdf",
     "static/media/python-crash-course.992df203.md": "/physics-ug-journal-club/static/media/python-crash-course.992df203.md"
   },
   "entrypoints": [
@@ -23,6 +24,6 @@
     "static/css/2.75cac9de.chunk.css",
     "static/js/2.51ab82fd.chunk.js",
     "static/css/main.afe542f7.chunk.css",
-    "static/js/main.309e8902.chunk.js"
+    "static/js/main.dbb09d5d.chunk.js"
   ]
 }
