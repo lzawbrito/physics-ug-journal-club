@@ -45,3 +45,10 @@ Some packages commonly used in physics are
 - [Astropy](https://www.astropy.org/): astronomy utilities (read FITS files, 
   convert between coordinate systems, so on). 
 
+
+### Further topics:
+CS courses useful for physicists:
+- CSCI0190 or CSCI0170 and/or CSCI0180 (i.e., some intro course)
+- CSCI1951A - Data Science
+- CSCI1380 - Distributed Computer Systems
+
