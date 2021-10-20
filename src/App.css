@@ -82,6 +82,7 @@ pre {
   padding-right: 25%;
   z-index: 0;
   padding-top: var(--paddding-top);  
+  margin-bottom: 50px;
 }
 
 .pageTitle {
