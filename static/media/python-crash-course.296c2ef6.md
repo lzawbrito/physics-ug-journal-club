@@ -44,6 +44,8 @@ Some packages commonly used in physics are
   See [Seaborn](https://seaborn.pydata.org/) as well.
 - [Astropy](https://www.astropy.org/): astronomy utilities (read FITS files, 
   convert between coordinate systems, so on). 
+- [Statsmodels](https://www.statsmodels.org/stable/index.html): statistical 
+  analysis. See also [Pandas](https://pandas.pydata.org/).
 
 ### (Virtual) Environments 
 Sometimes we won't use the same packages across all projects we work on. We also 
@@ -151,6 +153,7 @@ example if we import Numpy we can calculate the cosine of some number:
 (This "import as" syntax just means we are gonna import this package and rename 
 it `np` so we don't have to write `numpy` every time). 
 
+### Python in a Script
 I personally tend to use the Python REPL only when I want to really quickly 
 check if I can safely do a certain thing in Python or if I want to do a simple 
 calculation. Most of the time, however, you'll find yourself writing scripts. 
@@ -177,7 +180,8 @@ python demo.py
 Or, if we have our editor set up correctly, we should be able to click some 
 sort of run button. Setting up your editor can be a pain, in this case my 
 VSCode is already set up, so if you have any particular problems doing so feel 
-free to find me. In short, for VSCode we need to install a Python "extension" 
+free to find me. In short, for VSCode we need to install a [Python
+"extension"](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 then in the bottom info display select the right environment. The extension 
 should recognize the Anaconda environments that are set up.
 
@@ -188,6 +192,13 @@ print(np.cos(np.pi))
 ```
 
 
+### Numpy 
+
+### Scipy 
+
+### Matplotlib 
+
+###
 
 ### Further topics:
 CS courses useful for physicists:
@@ -196,6 +207,6 @@ CS courses useful for physicists:
 - **CSCI1380** - Distributed Computer Systems
 - **CSCI2370** - Interdisciplinary Scientific Visualization (If you're interested in
   this kind of thing and want to learn more about the process of interdisciplinary
-  research. It's a bit of a unique course and definitely not for everyone so feel
+  research. It's a bit of a unique course and definitely not for everyone, so feel
   free to ask me about it!)
 
