@@ -27,33 +27,36 @@ a {
   color: var(--blue);
 }
 
-pre code {
+pre {
   background-color: var(--code-gray);
   padding: 5px;
   border-radius: 5px;
 }
 
+.sideBar {
+  display: grid;
+  position: absolute;
+  width: var(--nav-width);
+  grid-template-rows: auto auto;
+  grid-template-columns: 100%;
+  z-index: 1;
+}
+
 .headerContainer {
   background-color: var(--gray);
-  width: var(--nav-width);
   font-size: var(--title-size);
   font-weight: bold;
-  position: fixed;
   padding-left: var(--left-padding);
   padding-right: var(--left-padding);
   padding-top: var(--paddding-top);
-  padding-bottom: 5px;
   z-index: 1;
 }
 
 .sideNav {
   background-color: var(--gray);
-  position: fixed;
-  width: var(--nav-width);
-  z-index: 2;
+  position: sticky;
+  z-index: 100;
   font-size: 22px;
-  left: 0;
-  top: calc(2 * var(--title-size) + var(--paddding-top) + 5px);
   padding-top: var(--paddding-top);
   padding-left: var(--left-padding);
 }
@@ -64,10 +67,12 @@ pre code {
   color: black;
 }
 
+
 .navSelected {
   color: var(--blue);
   text-decoration: underline;
 }
+
 
 .content {
   position:sticky;
@@ -164,5 +169,8 @@ pre code {
     font-style: bold;
   }
 
+  .sideBar {
+    display: none;
+  }
 
 }

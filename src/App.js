@@ -30,17 +30,19 @@ function App() {
     <HashRouter>
     <div className="App">
       <body>
-        <Nav/>
         <div className="mobileHeaderContainer">
           <div className="sideNavButton" onClick={openSidenav}>{'\u2630'}</div>
           <div className="mobileSiteTitle">
             Phys UG Journal Club
           </div>
         </div>
-        <MobileSideNav width={wid} closeNav={closeSidenav}/>
-        <div className="headerContainer">
-          Physics Undergraduate Journal Club
+        <div className="sideBar">
+          <div className="headerContainer">
+            Physics Undergraduate Journal Club
+          </div>
+            <Nav/>
         </div>
+        <MobileSideNav width={wid} closeNav={closeSidenav}/>
         <div className="content">
           <Switch>
             <Route exact path="/notes-slides">
