@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/physics-ug-journal-club/static/css/main.5ee515a9.chunk.css",
-    "main.js": "/physics-ug-journal-club/static/js/main.6dd25068.chunk.js",
-    "main.js.map": "/physics-ug-journal-club/static/js/main.6dd25068.chunk.js.map",
+    "main.js": "/physics-ug-journal-club/static/js/main.75c18df4.chunk.js",
+    "main.js.map": "/physics-ug-journal-club/static/js/main.75c18df4.chunk.js.map",
     "runtime-main.js": "/physics-ug-journal-club/static/js/runtime-main.a1d33d26.js",
     "runtime-main.js.map": "/physics-ug-journal-club/static/js/runtime-main.a1d33d26.js.map",
     "static/css/2.75cac9de.chunk.css": "/physics-ug-journal-club/static/css/2.75cac9de.chunk.css",
@@ -24,6 +24,6 @@
     "static/css/2.75cac9de.chunk.css",
     "static/js/2.1663da8e.chunk.js",
     "static/css/main.5ee515a9.chunk.css",
-    "static/js/main.6dd25068.chunk.js"
+    "static/js/main.75c18df4.chunk.js"
   ]
 }
