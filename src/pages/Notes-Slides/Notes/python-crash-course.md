@@ -35,8 +35,11 @@ themselves. In that case, the original author of that program will create a
 that other people have written. 
 
 Some packages commonly used in physics are 
-- [Scipy](https://www.scipy.org/}): perform numerical 
-  integration, solve differential equations, imports fundamental constants.
+- [Scipy](https://docs.scipy.org/doc/scipy/reference/tutorial/index.html#user-guide):
+perform numerical 
+ integration, solve differential equations, imports
+fundamental constants, 
+  signal processing, stats. 
 - [Numpy](https://numpy.org/): linear algebraic operations, easy array handling. 
 - [Sympy](https://www.sympy.org/en/index.html): symbolic mathematics (think 
   Wolfram Alpha or Mathematica).
@@ -191,14 +194,218 @@ to actually see things we have to call `print` on them:
 print(np.cos(np.pi))
 ```
 
+### Python in Jupyter Notebooks
+A third way to run Python is in Jupyter Notebooks. Notebooks are, in short,  
+documents that can include runnable scripts in them. These are typically used 
+when the author wants to combine human-readable text and graphics with code that 
+can be executed, usually for the purposes of a demonstration or some quick and 
+easy scripting. 
+
+Jupyter has a pretty good [tutorial](https://jupyter.org/try) on how to use
+Notebooks, so, in the interest of time, I'm not going to spend too much time
+on them.
 
 ### Numpy 
+Numpy facilitates working with arrays in Python. Let's see how one would, 
+for example, set up some sort of mathematical function with Numpy. We can 
+make an array running from, say, $-\pi$ to $\pi$ with intervals of size $0.1$
+using `arange`: 
+```
+x = np.arange(- np.pi, np.pi, 0.1)
+```
+
+Or an array of 100 evenly spaced numbers from $-\pi$ to $\pi$:
+```
+x = np.linspace(- np.pi, np.pi, 0.1)
+```
+
+Now we actually define our function. Functions in Python are denoted by the 
+keyword `def`. You then type a colon to signify that the body of the function 
+is beginning. The function body must be indented by one tab; anything
+un-indented is considered the outside of the function. So we can write 
+```
+def squared(x): 
+  # not the same x as before!
+  return x * x
+
+# Note: multivariate functions can just be written with, say
+def f(x, y): 
+  ...
+```
+
+And, if we run `squared(x)` we should see the values of the function 
+$y = x^2$ in the interval we specified. 
+
+This should look something like `array([...])`. This is because Numpy converted 
+our regular Python list to a Numpy array. Numpy does this automatically very 
+often, but on occasion you'll have to convert that list to an array before 
+doing some sort of operation by running: 
+```
+np.array([1, 2, 3])
+```
+
+This just converts that list to a Numpy array. 
+
+Numpy arrays are great because they are really easy to do operations with: 
+```
+>>> np.array([1,2,3]) + np.array([1,2,3])
+array([2, 4, 6])
+
+>>> np.array([1,2,3]) - np.array([1,2,3])
+array([0, 0, 0])
+
+>>> np.array([1,2,3]) * np.array([1,2,3])
+array([1, 4, 9])
+```
+
+That last one was element-wise multiplication. To perform matrix multiplication: 
+```
+>>> np.matmul(np.array([1,2,3]), np.array([1,2,3]))
+14
+```
+
+where Numpy has interpreted this as a dot product. 
+
+Matrices in Numpy are intuitive: 
+```
+>>> a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+#                          [1, 2, 3]
+# Equivalent to the matrix [4, 5, 6]
+#                          [7, 8, 9]
+
+>>> b = [[1,4,3],[1,5,6],[7,8,0]]
+
+>>> np.matmul(a, b)
+array([[ 24,  38,  15],
+       [ 51,  89,  42],
+       [ 78, 140,  69]])
+```
+
+We can transpose a matrix: 
+
+```
+>>> np.transpose(a)
+array([[1, 4, 7],
+       [2, 5, 8],
+       [3, 6, 9]])
+```
+
+Add matrices (make sure to make these Numpy arrays otherwise Python will 
+just put the two lists together!): 
+```
+>>> np.array(a) + np.array(b)
+array([[ 2,  6,  6],
+       [ 5, 10, 12],
+       [14, 16,  9]])
+```
 
 ### Scipy 
+Scipy is a broader package that gives you a plethora of scientific computing 
+tools. There are far too many functionalities to cover just today, so 
+I'll just go over the most immediately useful ones. The rest can be found 
+[here](https://docs.scipy.org/doc/scipy/reference/tutorial/index.html#user-guide).
 
-### Matplotlib 
+We were just discussing some linear algebra adjacent applications, so let us 
+continue down that route. We can import the linear algebra module: 
+```
+from scipy import linalg
+```
 
-###
+Then we can, for example, find the determinant of a matrix:
+```
+>>> linalg.det(b)
+39
+```
+
+We can find the inverse of a matrix: 
+```
+>>> linalg.inv(b)
+array([[-1.23076923,  0.61538462,  0.23076923],
+       [ 1.07692308, -0.53846154, -0.07692308],
+       [-0.69230769,  0.51282051,  0.02564103]])
+```
+
+(Notice these are Numpy arrays. Numpy is affiliated with Scipy.)
+We can solve for linear systems: 
+```
+>>> linalg.solve(b, [1, 2, 3])
+array([ 0.69230769, -0.23076923,  0.41025641])
+```
+
+We also have an integration module which can solve differential equations 
+and perform numerical integration: 
+```
+>>> integrate.quad(lambda x: np.cos(x) * np.cos(x), -np.pi, np.pi)
+(3.1415926535897922, 2.305878948871502e-09)
+```
+
+where the first number is the result of the integration and the second is 
+an error bound. That `lambda` expression is just a single-line function. It just 
+returns whatever comes after the colon. We can also integrate using infinity as
+a bound with `scipy.inf` (import using `from scipy import inf`). There's 
+also double and triple integration, which you can read more about 
+[here](https://docs.scipy.org/doc/scipy/reference/tutorial/integrate.html).
+
+
+We can solve ordinary differential equation initial value problems. Suppose 
+we want to solve (example taken from Scipy docs):
+$$
+\frac{d^2w}{dz^2} - zw(z) = 0
+$$
+
+This is a second-order differential equation, so we need two initial values, 
+say $w(0)= 3$ and $w'(0)=0$. Before we give this to Scipy we need to convert it 
+into a form that is interpretable by the module, so we separate the second 
+order derivative and the function into two different functions and treat this 
+as a system of first-order differential equations: 
+$$
+w'' = z w \text{ and } w' = w' 
+$$
+
+In matrix form:
+$$
+\frac{d}{dz}
+\begin{bmatrix}
+w' \\ w
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & -z\\ 
+1 & 0 
+\end{bmatrix}
+\begin{bmatrix}
+w' \\ w
+\end{bmatrix}
+$$
+
+In code, we first define the initial conditions: 
+```
+w_0 = 3
+w_prime_0 = 1
+y_0 = [w_prime_0, w_0]
+```
+
+then define the differential equation in matrix form: 
+```
+def eqn(z, y):
+    return [z * y[1], y[0]]
+```
+
+define the interval along which we will solve: 
+```
+interval = [0, 4]
+```
+
+and at last solve: 
+```
+>>> sol = integrate.solve_ivp(eqn, interval, y_0)
+>>> sol.y[1]
+array([  3.        ,   3.08613211,   4.33132688,   9.45655602,
+        33.1858188 , 144.12447093, 298.0691259 ])
+```
+
+### Astropy 
 
 ### Further topics:
 CS courses useful for physicists:
