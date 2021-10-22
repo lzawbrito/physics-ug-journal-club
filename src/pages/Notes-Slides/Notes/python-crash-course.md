@@ -406,6 +406,8 @@ array([  3.        ,   3.08613211,   4.33132688,   9.45655602,
 ```
 
 ### Astropy 
+Lastly, we will briefly cover Astropy. 
+
 
 ### Further topics:
 CS courses useful for physicists:
