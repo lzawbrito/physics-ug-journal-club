@@ -10,6 +10,10 @@ export const pages = [
         name: "Notes/Slides",
         link: "/notes-slides"
     },
+    // {
+    //     name: "Request a Topic",
+    //     link: "/request"
+    // },
     {
         name: "About",
         link: "/about"

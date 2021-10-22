@@ -15,11 +15,18 @@ const pageContent = `
 is a sophomore concentrating in Mathematical Physics and Computer Science. 
 He has done research in observational cosmology, computational biophysics, 
 and most recently in computational condensed matter physics. Outside of physics, 
-he is interested in songwriting, skateboarding, and philosophy. 
+he is interested in songwriting, hardcore punk, skateboarding, and philosophy.
+He also manages this site, so if you have any suggestions please reach out to
+him!
 
 ### Past Co-Heads 
-**Adam Tropper**: Adam co-founded the club in 2020. He is currently researching 
-high energy theory as a PhD candidate at Harvard. 
+**Adam Tropper**: Adam co-founded the club in 2020. He is an NSF Graduate 
+Research Fellow and is currently studying high energy as a PhD candidate at 
+Harvard. During his time at Brown, Adam worked with Professor JiJi Fan on 
+various applications of random matrix theory to physics beyond the standard 
+model, both in the context of the mass generation via the Higgs mechanism and 
+early universe cosmology. Outside of physics, Adam enjoys cooking, listening to 
+music, and spending time outdoors. 
 `
 
 export default class Home extends React.Component {

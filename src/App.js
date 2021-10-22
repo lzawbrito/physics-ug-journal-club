@@ -9,6 +9,8 @@ import NotesDisplay from './pages/Notes-Slides/NotesDisplay'
 import Nav from './pages/Nav'
 import MobileSideNav from './pages/MobileSideNav';
 import { useState } from 'react';
+import Requests from './pages/Requests/Request';
+import { FormspreeProvider } from '@formspree/react';
 
 function generateNotesRouter(a) {
   if (!(a.notes == null)) {
@@ -50,6 +52,9 @@ function App() {
             </Route>
             <Route exact path="/about">
               <About/>
+            </Route>
+            <Route exact path="/request">
+              <Requests/>
             </Route>
             <Route exact path="/">
               <Home/>

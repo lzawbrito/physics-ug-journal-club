@@ -31,6 +31,7 @@ pre {
   background-color: var(--code-gray);
   padding: 5px;
   border-radius: 5px;
+  white-space: pre-wrap;
 }
 
 .sideBar {
@@ -137,7 +138,23 @@ pre {
   padding-left: 20px;
 }
 
+form label {
+  padding-right: 5px;
+}
+
+form .fieldName {
+  padding-right: 5px;
+}
+
+form .textField {
+  width: 200px
+}
+
 @media (max-width: 1000px) {
+  body {
+    font-size: 16px;
+  }
+
   .headerContainer {
     display: none;
   }  
@@ -172,6 +189,10 @@ pre {
 
   .sideBar {
     display: none;
+  }
+
+  .content {
+    margin-bottom: 100px
   }
 
 }
