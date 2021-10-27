@@ -14,7 +14,7 @@ If the console does not print something like `Python 3.8.8` something has
 gone wrong and Python was not installed properly. 
 
 #### Python via Anaconda (Recommended)
-Conda is a package and environment manager for Python. We'll explain what those 
+[Anaconda](https://www.anaconda.com/products/individual) is a package and environment manager for Python. We'll explain what those 
 two terms mean briefly.
 
 Download and install Anaconda by following
@@ -397,6 +397,11 @@ define the interval along which we will solve:
 interval = [0, 4]
 ```
 
+give it some input values to evaluate: 
+```
+z = np.linspace(0, 4, 100)
+```
+
 and at last solve: 
 ```
 >>> sol = integrate.solve_ivp(eqn, interval, y_0)
@@ -416,7 +421,7 @@ from astropy.io import fits
 
 Then we open a file that is in the same directory, say, `./local_compare.fits`:
 ```
-file = file.open('./local_compare')
+file = fits.getdata('./local_compare')
 ```
 
 And it's that easy! Now we can access the, say, the first band (i.e., the 
@@ -457,6 +462,14 @@ Astropy [documentation](https://docs.astropy.org/en/stable/api/astropy.coordinat
 For example, we can produce the coordinates in hours-minutes-seconds units:
 ```
 sky.to_string(style='hmsdms')
+```
+
+If we wanted to find the pixel coordinates from right ascension, declination 
+coordinates, we can make a new `SkyCoord`: 
+```
+import astropy.units as u
+from astropy.coordinates import SkyCoord  
+c = SkyCoord(85.39, -2.577, unit=u.deg)
 ```
 
 Astropy has a myriad of other functionalities such as generating cutouts 
