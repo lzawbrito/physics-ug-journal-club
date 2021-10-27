@@ -27,7 +27,7 @@ const notesRouters = notesSlides.map(generateNotesRouter)
 
 function App() {
   const [wid, setWid] = useState(`0%`)
-  const openSidenav = () => setWid(`180px`)
+  const openSidenav = () => setWid(`200px`)
   const closeSidenav = () => setWid('0%')
   return (
     <HashRouter>
