@@ -32,6 +32,10 @@ be added to our mailing list.
 
 ### Where can I view past meetings' materials?
 See [Notes/Slides](#/notes-slides)!
+
+### I'm interested in learning a specific topic... 
+You can check [Notes/Slides](#/notes-slides) to see what we've gone over so far.
+If you can't find what you're looking for, you can [Request a Topic](#/request)!
 `
 
 export default class Home extends React.Component {

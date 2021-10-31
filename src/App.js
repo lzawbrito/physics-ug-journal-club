@@ -12,6 +12,7 @@ import { useState } from 'react';
 import Requests from './pages/Requests/Request';
 import { FormspreeProvider } from '@formspree/react';
 
+
 function generateNotesRouter(a) {
   if (!(a.notes == null)) {
     return <Route path={`/notes-slides/${a.notes.id}`} 
@@ -26,7 +27,7 @@ const notesRouters = notesSlides.map(generateNotesRouter)
 
 function App() {
   const [wid, setWid] = useState(`0%`)
-  const openSidenav = () => setWid(`180px`)
+  const openSidenav = () => setWid(`200px`)
   const closeSidenav = () => setWid('0%')
   return (
     <HashRouter>

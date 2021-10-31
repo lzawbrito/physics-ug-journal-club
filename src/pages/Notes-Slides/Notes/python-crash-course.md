@@ -14,7 +14,7 @@ If the console does not print something like `Python 3.8.8` something has
 gone wrong and Python was not installed properly. 
 
 #### Python via Anaconda (Recommended)
-Conda is a package and environment manager for Python. We'll explain what those 
+[Anaconda](https://www.anaconda.com/products/individual) is a package and environment manager for Python. We'll explain what those 
 two terms mean briefly.
 
 Download and install Anaconda by following
@@ -397,6 +397,11 @@ define the interval along which we will solve:
 interval = [0, 4]
 ```
 
+give it some input values to evaluate: 
+```
+z = np.linspace(0, 4, 100)
+```
+
 and at last solve: 
 ```
 >>> sol = integrate.solve_ivp(eqn, interval, y_0)
@@ -406,11 +411,106 @@ array([  3.        ,   3.08613211,   4.33132688,   9.45655602,
 ```
 
 ### Astropy 
-Lastly, we will briefly cover Astropy. 
+Lastly, we will briefly cover Astropy. The main two things I'll show are: 
+opening FITS files and converting between coordinate systems. 
 
+To open FITS files, we use astropy's `fits` module:
+```
+from astropy.io import fits 
+```
+
+Then we open a file that is in the same directory, say, `./local_compare.fits`:
+```
+file = fits.getdata('./local_compare')
+```
+
+And it's that easy! Now we can access the, say, the first band (i.e., the 
+first color) of the top-left pixel using 
+```
+fits[0][0][0]
+```
+
+FITS files also carry a header where metadata is stored. This includes how 
+to translate between pixels and real-world coordinates. To access the 
+header we can run 
+```
+hdr = fits.getheader('path/to/file')
+```
+
+Astropy's world coordinate system module lets us convert between pixels 
+in a fits file and actual location in, say, right ascension and 
+declination coordinates: 
+```
+from astropy.wcs import WCS
+```
+
+As mentioned above, headers often the necessary conversions. We can 
+then make a new `WCS` coordinate converter using the header: 
+```
+wcs = WCS(hdr)
+```
+
+Now we can convert from pixel coordinates to world coordinates: 
+```
+sky = wcs.pixel_to_world(20, 20)
+```
+
+This is a `SkyCoord` object, not just two numbers. These are returned 
+in this way because it facilitates converting between different coordinate 
+unit systems or performing additional operations. See the 
+Astropy [documentation](https://docs.astropy.org/en/stable/api/astropy.coordinates.SkyCoord.html). 
+For example, we can produce the coordinates in hours-minutes-seconds units:
+```
+sky.to_string(style='hmsdms')
+```
+
+If we wanted to find the pixel coordinates from right ascension, declination 
+coordinates, we can make a new `SkyCoord`: 
+```
+import astropy.units as u
+from astropy.coordinates import SkyCoord  
+c = SkyCoord(85.39, -2.577, unit=u.deg)
+```
+
+Astropy has a myriad of other functionalities such as generating cutouts 
+of a specific object in a larger image, detecting objects, and much more. 
+Again, see the [Astropy documentation](https://docs.astropy.org/en/stable/index.html)
+
+### Misc Python Functionalities
+Occasionally we may want to run a command once for every number in a list. 
+We can use Python's for loops: 
+```
+>>> l = []
+>>> for i in [1, 2, 3]:
+>>>   l.append(i + 1)
+>>> l
+[2, 3, 4]
+```
+
+We might have data stored in a file somewhere, in which case we can use 
+`open`: 
+```
+f = open('path/to/file', 'r') # 'r' says we're just gonna read the file
+f.readlines() # a list of each line in the file!
+```
 
 ### Further topics:
-CS courses useful for physicists:
+**Reading documentations**: computer scientists are compulsive documenters. 
+Every (halfway decent) package you will use will have been documented 
+extensively: these documentations will include technical details of functions, 
+optional functionalities, finer settings, and examples. That said, docs can be 
+very hard to read sometimes---they're often walls of text. While it might be 
+difficult at first, I *promise* you will benefit from referring to
+documentations. Reading docs is itself a skill, and, as with all skills,
+it's something you will hone with practice. 
+
+**APIs**: this one's for the astrophysics crowd: if you're working with data 
+releases such as LegacySurvey or DECaLS or the SDSS, your life is going to be a 
+lot easier if you learn how to use web APIs. This is a bit of a nuanced subject 
+for an introductory lecture like this, so if you're interested please reach 
+out to me and we can talk more. 
+
+**CS courses useful for physicists:**
 - **CSCI0190** or **CSCI0170** and/or **CSCI0180** (i.e., some intro course)
 - **CSCI1951A** - Data Science
 - **CSCI1380** - Distributed Computer Systems
@@ -418,4 +518,9 @@ CS courses useful for physicists:
   this kind of thing and want to learn more about the process of interdisciplinary
   research. It's a bit of a unique course and definitely not for everyone, so feel
   free to ask me about it!)
+- **CSCI1710** - Logic for Systems (I've been *told* this is useful for physics
+  simulations. I cannot confirm the degree to which this is true.)
 
+**Non-CS courses that are computational:**
+- **PHYS1600** - Computational Physics 
+- **APMA0160** - Introduction to Scientific Computing
