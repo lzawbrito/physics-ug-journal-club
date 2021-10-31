@@ -1,7 +1,7 @@
 {
   "name": "physics-ug-journal-club",
   "version": "0.1.0",
-  "homepage": "http://lzawbrito.github.io/physics-ug-journal-club",
+  "homepage": "http://www.phys-journal.club",
   "private": true,
   "dependencies": {
     "@formspree/react": "^2.2.4",
